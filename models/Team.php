@@ -17,7 +17,7 @@
 
     public function getTeams(): PDOStatement {
       $query = '
-      SELECT t.id,t.name,t.created_at
+      SELECT *
       FROM ' . $this->table;
 
       // prepare statement

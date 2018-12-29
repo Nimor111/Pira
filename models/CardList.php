@@ -18,7 +18,7 @@
 
     public function getLists(): PDOStatement {
       $query = '
-      SELECT l.id,l.name,l.board,l.created_at
+      SELECT *
       FROM ' . $this->table;
 
       // prepare statement
