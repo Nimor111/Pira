@@ -6,6 +6,33 @@
       $this->board = new Board($conn);
     }
 
+    public function getLists(string $id) {
+      $this->board->id = $id;
+
+      $result = $this->board->getBoardLists();
+
+      if ($result->rowCount()) {
+        $lists = array();
+        $lists['data'] = array();
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          $list = array(
+            'id' => $row['id'],
+            'name' => $row['name'],
+            'created_at' => $row['created_at']
+          );
+
+          array_push($lists['data'], $list);
+        }
+
+        echo json_encode($lists);
+      } else {
+        echo json_encode(
+          array('message' => 'No lists found!')
+        );
+      }
+    }
+
     public function get() {
       $result = $this->board->getBoards();
 
@@ -78,6 +105,7 @@
           )
         );
       } else {
+        http_response_code(400);
         echo json_encode(
           array('message' => 'Board not created!')
         );

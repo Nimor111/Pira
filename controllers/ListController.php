@@ -6,6 +6,38 @@
       $this->list = new CardList($conn);
     }
 
+    public function getCards(string $id) {
+      $this->list->id = $id;
+
+      $result = $this->list->getListCards();
+
+      if ($result->rowCount()) {
+        $cards = array();
+        $cards['data'] = array();
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          $card = array(
+            'id' => $row['id'],
+            'title' => $row['title'],
+            'description' => $row['description'],
+            'created_at' => $row['created_at'],
+            'assignee' => array(
+              'username' => $row['username'],
+              'email' => $row['email']
+            )
+          );
+
+          array_push($cards['data'], $card);
+        }
+
+        echo json_encode($cards);
+      } else {
+        echo json_encode(
+          array('message' => 'No cards found!')
+        );
+      }
+    }
+
     public function get() {
       $result = $this->list->getLists();
 

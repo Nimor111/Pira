@@ -27,7 +27,6 @@
 
       // prepare statement
       $stmt = $this->connection->prepare($query);
-
       // execute query
       $stmt->execute();
 
@@ -71,6 +70,27 @@
       }
 
       return false;
+    }
+
+    public function getBoardLists(): PDOStatement {
+      $query = '
+      SELECT l.id, l.name, l.created_at
+      FROM ' . $this->table . ' b
+      INNER JOIN lists l
+      ON b.id = l.board
+      WHERE b.id = :id
+      ';
+
+      // prepare statement
+      $stmt = $this->connection->prepare($query);
+
+      // bind id
+      $stmt->bindParam(':id', $this->id);
+
+      // execute query
+      $stmt->execute();
+
+      return $stmt;
     }
 
     public function create(): bool {

@@ -15,6 +15,29 @@
       $this->connection = $db;
     }
 
+    public function getTeamBoards(): PDOStatement {
+      $query = '
+      SELECT b.id, b.title, b.created_at, d.username, d.email
+      FROM ' . $this->table . ' t
+      INNER JOIN boards b
+      ON b.team = t.id
+      INNER JOIN developers d
+      ON d.id = b.lead
+      WHERE t.id = :id
+      ';
+
+      // prepare statement
+      $stmt = $this->connection->prepare($query);
+
+      // bind id
+      $stmt->bindParam(':id', $this->id);
+
+      // execute query
+      $stmt->execute();
+
+      return $stmt;
+    }
+
     public function getTeams(): PDOStatement {
       $query = '
       SELECT *
@@ -66,7 +89,7 @@
       $query = '
       INSERT INTO ' . $this->table . '
       SET
-        name = :name,
+        name = :name
       ';
 
       // prepare statement

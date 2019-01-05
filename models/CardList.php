@@ -30,6 +30,29 @@
       return $stmt;
     }
 
+    public function getListCards(): PDOStatement {
+      $query = '
+      SELECT c.id, c.title, c.description, c.created_at, a.email,a.username
+      FROM ' . $this->table . ' l
+      INNER JOIN cards c
+      ON l.id = c.list
+      INNER JOIN developers d
+      ON d.id = c.assignee
+      WHERE l.id = :id
+      ';
+
+      // prepare statement
+      $stmt = $this->connection->prepare($query);
+
+      // bind id
+      $stmt->bindParam(':id', $this->id);
+
+      // execute query
+      $stmt->execute();
+
+      return $stmt;
+    }
+
     public function getSingleList(): bool {
       $query = '
       SELECT *

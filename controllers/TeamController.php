@@ -6,6 +6,37 @@
       $this->team = new Team($conn);
     }
 
+    public function getBoards(string $id) {
+      $this->team->id = $id;
+
+      $result = $this->team->getTeamBoards();
+
+      if ($result->rowCount()) {
+        $boards = array();
+        $boards['data'] = array();
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          $board = array(
+            'id' => $row['id'],
+            'title' => $row['title'],
+            'lead' => array(
+              'username' => $row['username'],
+              'email' => $row['email']
+            ),
+            'created_at' => $row['created_at']
+          );
+
+          array_push($boards['data'], $board);
+        }
+
+        echo json_encode($boards);
+      } else {
+        echo json_encode(
+          array('message' => 'Boards not found!')
+        );
+      }
+    }
+
     public function get() {
       $result = $this->team->getTeams();
 
