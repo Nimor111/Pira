@@ -20,9 +20,10 @@
 
     public function getBoards(): PDOStatement {
       $query = '
-      SELECT b.id,b.title,b.team,d.email,d.username,b.created_at
+      SELECT b.id,b.title,t.name,d.email,d.username,b.created_at
       FROM ' . $this->table . ' b
       INNER JOIN developers d ON b.lead = d.id
+      INNER JOIN teams t ON t.id = b.team
       ';
 
       // prepare statement

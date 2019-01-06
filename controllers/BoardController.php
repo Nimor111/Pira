@@ -44,7 +44,7 @@
           $board = array(
             'id' => $row['id'],
             'title' => $row['title'],
-            'team' => $row['team'],
+            'team' => $row['name'],
             'lead' => array(
               'email' => $row['email'],
               'username' => $row['username'],
