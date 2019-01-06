@@ -1,0 +1,19 @@
+#board-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#board-table td,
+#board-table th {
+  border: 1px solid #ddd;
+  padding: 1em;
+}
+
+#board-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #008080;
+  color: white;
+}

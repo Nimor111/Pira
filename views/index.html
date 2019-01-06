@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="js/HttpClient.js"></script>
+    <script src="js/Dom.js"></script>
+    <title>Pira</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+  </head>
+  <body>
+    <h1>Welcome to Pira!</h1>
+    <div id="content" />
+      <table id="board-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Team</th>
+            <th>Lead</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody id="board-table-body"></tbody>
+      </table>
+      <script>
+        document.addEventListener('DOMContentLoaded', showBoards);
+
+        function showBoards() {
+          HtmlClient.get("board").then(data => {
+            populateBoards(data);
+          });
+        }
+      </script>
+  </body>
+</html>
