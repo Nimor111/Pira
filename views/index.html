@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <script src="js/HttpClient.js"></script>
-    <script src="js/Dom.js"></script>
+    <script src="js/dom.js"></script>
     <title>Pira</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/modal.css" type="text/css" media="screen">
   </head>
   <body>
-    <h1>Welcome to Pira!</h1>
+    <button class="createButton" type="submit">Create Board</button>
+    <h1>Pira</h1>
     <div id="content" />
       <table id="board-table">
         <thead>
@@ -22,14 +24,34 @@
         </thead>
         <tbody id="board-table-body"></tbody>
       </table>
+
+      <div id="simpleModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="closeBtn">&times;</span>
+            <h2>Create board</h2>
+          </div>
+          <div class="modal-body">
+            <form id="create-board-form" method="get" accept-charset="utf-8">
+              <label for="title">Title</label><br />
+              <input type="text" name="title" id="title" placeholder="Enter title here..." />
+              <label for="team">Team</label><br />
+              <select id="select-team">
+              </select>
+              <label for="lead">Lead</label><br />
+              <select id="select-lead">
+              </select>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <h3>Create board</h3>
+          </div>
+        </div>
+      </div>
+
       <script>
         document.addEventListener('DOMContentLoaded', showBoards);
-
-        function showBoards() {
-          HtmlClient.get("board").then(data => {
-            populateBoards(data);
-          });
-        }
       </script>
+      <script src="js/modal.js"></script>
   </body>
 </html>
