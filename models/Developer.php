@@ -18,6 +18,20 @@
       $this->connection = $db;
     }
 
+    public function getUsers(): PDOStatement {
+      $query='
+      SELECT d.id, d.username, d.email
+      FROM ' . $this->table . ' d
+      ';
+
+      // prepare statement
+      $stmt = $this->connection->prepare($query);
+      // execute query
+      $stmt->execute();
+
+      return $stmt;
+    }
+
     // Attempt to login user with email and password
     public function getByEmail(): bool {
       $query = '

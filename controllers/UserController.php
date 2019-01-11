@@ -44,5 +44,30 @@
         );
       }
     }
+
+    public function get() {
+      $result = $this->user->getUsers();
+
+      if($result->rowCount()) {
+        $users = array();
+        $users['data'] = array();
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+          $user = array(
+            'id' => $row['id'],
+            'username' => $row['username'],
+            'email' => $row['email']
+          );
+
+          array_push($users['data'], $user);
+        }
+
+        echo json_encode($users);
+      } else {
+        echo json_encode(
+          array('message' => 'No users found!')
+        );
+      }
+    }
   }
 ?>
