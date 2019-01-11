@@ -7,13 +7,18 @@ const modalBtn = document.querySelector(".createButton");
 // Get close modal button
 const closeBtn = document.querySelector(".closeBtn");
 
-// Listen for open click
-modalBtn.addEventListener("click", openModal);
-modalBtn.addEventListener("click", showTeams);
-modalBtn.addEventListener("click", showUsers);
+// Get board submit button
+const createBtn = document.getElementById("submit-board");
+
+[openModal, showTeams, showUsers].forEach(f => {
+  modalBtn.addEventListener("click", f);
+});
 
 // Listen for close click
 closeBtn.addEventListener("click", closeModal);
+
+// Listen for submit
+createBtn.addEventListener("click", createBoard);
 
 // Close on outside click
 window.addEventListener("click", clickOutside);

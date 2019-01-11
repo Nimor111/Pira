@@ -39,6 +39,9 @@
   padding: 10px;
   color: #fff;
   text-align: center;
+  width: 100%;
+  cursor: pointer;
+  border: 0;
 }
 
 .closeBtn {

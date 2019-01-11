@@ -1,5 +1,8 @@
 function populateBoards(boards) {
   const tbody = document.getElementById("board-table-body");
+  while (tbody.firstChild) {
+    tbody.removeChild(tbody.firstChild);
+  }
 
   boards.data.forEach(board => {
     const row = document.createElement("tr");
