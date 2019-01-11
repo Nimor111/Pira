@@ -28,7 +28,7 @@ function populateTeams(teams) {
 }
 
 function populateUsers(users) {
-  const select = document.getElementById("select-user");
+  const select = document.getElementById("select-lead");
 
   users.data.forEach(user => {
     const option = document.createElement("option");

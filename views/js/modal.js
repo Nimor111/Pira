@@ -10,6 +10,7 @@ const closeBtn = document.querySelector(".closeBtn");
 // Listen for open click
 modalBtn.addEventListener("click", openModal);
 modalBtn.addEventListener("click", showTeams);
+modalBtn.addEventListener("click", showUsers);
 
 // Listen for close click
 closeBtn.addEventListener("click", closeModal);
