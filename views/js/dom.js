@@ -20,6 +20,9 @@ function populateBoards(boards) {
 
 function populateTeams(teams) {
   const select = document.getElementById("select-team");
+  while (select.firstChild) {
+    select.removeChild(select.firstChild);
+  }
 
   teams.data.forEach(team => {
     const option = document.createElement("option");
@@ -32,6 +35,9 @@ function populateTeams(teams) {
 
 function populateUsers(users) {
   const select = document.getElementById("select-lead");
+  while (select.firstChild) {
+    select.removeChild(select.firstChild);
+  }
 
   users.data.forEach(user => {
     const option = document.createElement("option");
