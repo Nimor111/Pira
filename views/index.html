@@ -13,11 +13,18 @@
     <link rel="stylesheet" href="css/nav.css" type="text/css" media="screen">
   </head>
   <body>
-    <div id="nav">
+    <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="#">Boards</a></li>
+      <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Boards</a>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+        </div>
+      </li>
       <li class="nav-title"><a href="index.html">Pira</a></li>
-    </div>
+    </ul>
     <div id="content" />
       <button class="createButton" type="submit">Create Board</button>
       <table id="board-table">
