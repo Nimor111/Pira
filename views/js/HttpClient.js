@@ -6,63 +6,54 @@ class HttpClient {
     return data;
   }
 
-  static login(data) {
-    return fetch(`/Pira/routes/user/login.php`, {
+  static async login(data) {
+    const res = await fetch(`/Pira/routes/user/login.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    })
-      .then(res => {
-        if (res.status === 401) {
-          return false;
-        } else {
-          return true;
-        }
-      })
-      .then(success => success);
+    });
+    if (res.status === 401) {
+      return false;
+    }
+
+    return true;
   }
 
-  static post(resource, data) {
-    return fetch(`/Pira/routes/${resource}/create.php`, {
+  static async post(resource, data) {
+    const res = await fetch(`/Pira/routes/${resource}/create.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(data => {
-        return data;
-      });
+    });
+
+    return await res.json();
   }
 
-  static put(resource, data) {
-    return fetch(`/Pira/routes/${resource}/update.php`, {
+  static async put(resource, data) {
+    const res = await fetch(`/Pira/routes/${resource}/update.php`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(data => {
-        return data;
-      });
+    });
+
+    return await res.json();
   }
 
-  static delete(resource, data) {
-    return fetch(`/Pira/routes/${resource}/delete.php`, {
+  static async delete(resource, data) {
+    const res = await fetch(`/Pira/routes/${resource}/delete.php`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(data => {
-        return data;
-      });
+    });
+
+    return await res.json();
   }
 }

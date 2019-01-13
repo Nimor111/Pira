@@ -67,11 +67,13 @@
     <script>
       const loginButton = document.getElementById("login-button");
       loginButton.addEventListener("click", login);
-      //loginButton.onkeydown = function(e) {
-       // if (e.keycode === 13) {
-        //  login();
-        //}
-      //}
+      document.addEventListener("keyup", function(event) {
+        event.preventDefault();
+
+        if (event.keyCode === 13) {
+          loginButton.click();
+        }
+      });
     </script>
     <script src="js/modal.js"></script>
   </body>
