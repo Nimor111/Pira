@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/nav.css" type="text/css" media="screen">
     <link rel="stylesheet" href="css/login.css" type="text/css" media="screen">
     <link rel="stylesheet" href="css/modal.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/validator.css" type="text/css" media="screen">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es7-shim/6.0.0/es7-shim.min.js"></script>
     <script src="js/HttpClient.js"></script>
     <script src="js/dom.js"></script>
@@ -56,6 +57,10 @@
 
     <div id="login-content">
       <h1>Login</h1>
+      <div class="error">
+        <span class="close-error" onclick="hideErrorMessage(this.parentElement)">&times;</span>
+        <strong>Error: </strong>Invalid email or password!
+      </div>
       <form id="login-form">
         <label for="login-email">Email</label>
         <input type="text" name="login-email" id="login-email" placeholder="Enter email here..." />

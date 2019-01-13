@@ -43,8 +43,20 @@ async function login() {
   if (status) {
     window.location.replace("index.html");
   } else {
-    console.log("Invalid login!");
+    const error = document.querySelector(".error");
+    error.style.display = "block";
+    error.style.opacity = "1";
+    setTimeout(function() {
+      hideErrorMessage(error);
+    }, 3000);
   }
+}
+
+function hideErrorMessage(error) {
+  error.style.opacity = "0";
+  setTimeout(function() {
+    error.style.display = "none";
+  }, 600);
 }
 
 function clearFields(fields) {
