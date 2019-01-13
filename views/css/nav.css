@@ -17,6 +17,16 @@ ul.nav li.nav-title {
   position: absolute;
 }
 
+ul.nav li.login {
+  right: 0%;
+  position: absolute;
+}
+
+ul.nav li.register {
+  right: 5%;
+  position: absolute;
+}
+
 ul.nav li a,
 .dropbtn {
   display: inline-block;

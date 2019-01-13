@@ -16,6 +16,10 @@ body {
   padding: 1em;
 }
 
+.board-id {
+  display: none;
+}
+
 #board-table th {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -25,7 +29,8 @@ body {
 }
 
 input[type="text"],
-select {
+select,
+input[type="password"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

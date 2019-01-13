@@ -4,18 +4,21 @@ function populateBoards(boards) {
     tbody.removeChild(tbody.firstChild);
   }
 
-  boards.data.forEach(board => {
-    const row = document.createElement("tr");
+  if (boards.data) {
+    boards.data.forEach(board => {
+      const row = document.createElement("tr");
 
-    row.innerHTML = `
+      row.innerHTML = `
     <td>${board.title}</td>
     <td>${board.team}</td>
     <td>${board.lead.username}</td>
     <td>${board.created_at}</td>
+    <td class="board-id">${board.id}</td>
     `;
 
-    tbody.appendChild(row);
-  });
+      tbody.appendChild(row);
+    });
+  }
 }
 
 function populateTeams(teams) {
