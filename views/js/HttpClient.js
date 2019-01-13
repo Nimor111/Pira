@@ -18,6 +18,8 @@ class HttpClient {
       return false;
     }
 
+    const credentials = res.headers.get("Authorization");
+    localStorage.setItem("credentials", credentials);
     return true;
   }
 

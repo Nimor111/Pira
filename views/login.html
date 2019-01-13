@@ -27,8 +27,11 @@
         </div>
       </li>
       <li class="nav-title"><a href="index.html"><i class="far fa-clipboard"></i> Pira</a></li>
-      <li class="register"><a href="#"><i class="fas fa-user-plus"></i></a></li>
-      <li class="login"><a href="login.html"><i class="fas fa-sign-in-alt"></i></a></li>
+      <div class="right-nav">
+        <li class="register"><a href="#"><i class="fas fa-user-plus"></i></a></li>
+        <li class="login"><a href="login.html"><i class="fas fa-sign-in-alt"></i></a></li>
+        <li class="logout"><a href="#"><i class="fas fa-sign-out-alt"></i></a></li>
+      </div>
     </ul>
 
     <div id="simpleModal" class="modal">
@@ -70,6 +73,7 @@
       <button type="submit" id="login-button" class="modal-footer">Login</button>
     </div>
     <script>
+      checkLogin();
       const loginButton = document.getElementById("login-button");
       loginButton.addEventListener("click", login);
       document.addEventListener("keyup", function(event) {

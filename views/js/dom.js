@@ -66,3 +66,24 @@ async function showUsers() {
   const users = await HttpClient.get("user");
   populateUsers(users);
 }
+
+function checkLogin() {
+  const login = document.querySelector("ul.nav li.login");
+  const register = document.querySelector("ul.nav li.register");
+  const logout = document.querySelector("ul.nav li.logout");
+
+  if (localStorage.getItem("credentials")) {
+    login.style.display = "none";
+    register.style.display = "none";
+    logout.style.display = "block";
+    logout.addEventListener("click", logoutClick);
+  } else {
+    login.style.display = "block";
+    register.style.display = "block";
+  }
+}
+
+function logoutClick() {
+  localStorage.removeItem("credentials");
+  window.location.replace("login.html");
+}

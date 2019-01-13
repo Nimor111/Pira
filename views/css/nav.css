@@ -17,14 +17,8 @@ ul.nav li.nav-title {
   position: absolute;
 }
 
-ul.nav li.login {
-  right: 0%;
-  position: absolute;
-}
-
-ul.nav li.register {
-  right: 5%;
-  position: absolute;
+ul.nav div.right-nav {
+  float: right;
 }
 
 ul.nav li a,
@@ -67,4 +61,8 @@ ul.nav .dropdown-content a:hover {
 
 ul.nav li.dropdown:hover .dropdown-content {
   display: block;
+}
+
+.logout {
+  display: none;
 }
