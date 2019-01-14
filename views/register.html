@@ -59,28 +59,29 @@
     </div>
 
     <div id="login-content">
-      <h1>Login</h1>
+      <h1>Register</h1>
       <div class="error">
         <span class="close-error" onclick="hideErrorMessage(this.parentElement)">&times;</span>
         <strong>Error: </strong>Invalid email or password!
       </div>
-      <form id="login-form">
-        <label for="login-email">Email</label>
-        <input type="text" name="login-email" id="login-email" placeholder="Enter email here..." />
-        <label for="login-password">Password</label>
-        <input type="password" name="login-password" id="login-password" placeholder="Enter password here..." />
+      <form id="register-form">
+        <label for="register-email">Email</label>
+        <input type="text" name="register-email" id="register-email" placeholder="Enter email here..." />
+        <label for="register-username">Username</label>
+        <input type="text" name="register-username" id="register-username" placeholder="Enter username here..." />
+        <label for="register-password">Password</label>
+        <input type="password" name="register-password" id="register-password" placeholder="Enter password here..." />
       </form>
-      <button type="submit" id="login-button" class="modal-footer">Login</button>
+      <button type="submit" id="register-button" class="modal-footer">Register</button>
     </div>
     <script>
-      checkLogin();
-      const loginButton = document.getElementById("login-button");
-      loginButton.addEventListener("click", login);
+      const registerButton = document.getElementById("register-button");
+      registerButton.addEventListener("click", register);
       document.addEventListener("keyup", function(event) {
         event.preventDefault();
 
         if (event.keyCode === 13) {
-          loginButton.click();
+          registerButton.click();
         }
       });
     </script>

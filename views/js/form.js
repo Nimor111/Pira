@@ -52,9 +52,31 @@ async function login() {
   }
 }
 
+async function register() {
+  const registerForm = document.getElementById("register-form");
+  const email = document.getElementById("register-email").value;
+  const username = document.getElementById("register-username").value;
+  const password = document.getElementById("register-password").value;
+
+  const data = {email, password, username};
+
+  const status = await HttpClient.register(data);
+
+  if (status) {
+    window.location.replace("login.html");
+  } else {
+    const error = document.querySelector(".error");
+    error.style.display = "block";
+    error.style.opacity = "1";
+    setTimeout(() => {
+      hideErrorMessage(error);
+    }, 3000);
+  }
+}
+
 function hideErrorMessage(error) {
   error.style.opacity = "0";
-  setTimeout(function() {
+  setTimeout(() => {
     error.style.display = "none";
   }, 600);
 }

@@ -23,6 +23,22 @@ class HttpClient {
     return true;
   }
 
+  static async register(data) {
+    const res = await fetch(`/Pira/routes/user/register.php`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (res.status === 400) {
+      return false;
+    }
+
+    return true;
+  }
+
   static async post(resource, data) {
     const res = await fetch(`/Pira/routes/${resource}/create.php`, {
       method: "POST",
