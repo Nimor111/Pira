@@ -25,7 +25,7 @@ async function createBoard() {
 
   showBoards();
 
-  closeModal();
+  createBoardModal.closeModal();
 }
 
 async function login() {
