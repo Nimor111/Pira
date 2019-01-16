@@ -73,6 +73,14 @@
         password = :password
       ';
 
+      // validate
+      if (is_null($this->email)
+        || $this->email === ""
+        || is_null($this->password)
+        || $this->password === "") {
+        return false;
+      }
+
       // prepare statement
       $stmt = $this->connection->prepare($query);
 

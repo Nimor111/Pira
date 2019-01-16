@@ -27,5 +27,8 @@ function fetchNav() {
       document.body.appendChild(navScript);
 
       checkLogin();
+    })
+    .catch(err => {
+      console.log(err);
     });
 }
