@@ -31,9 +31,7 @@ async function createBoard() {
 async function login() {
   const loginForm = document.getElementById("login-form");
   const email = document.getElementById("login-email").value;
-  if (email === "") {
-    return;
-  }
+
   const password = document.getElementById("login-password").value;
 
   const data = {email, password};
@@ -41,7 +39,7 @@ async function login() {
   const status = await HttpClient.login(data);
 
   if (status) {
-    window.location.replace("index.html");
+    onNavItemClick("/Pira/views");
   } else {
     const error = document.querySelector(".error");
     error.style.display = "block";
@@ -63,7 +61,7 @@ async function register() {
   const status = await HttpClient.register(data);
 
   if (status) {
-    window.location.replace("login.html");
+    onNavItemClick("/Pira/views/login");
   } else {
     const error = document.querySelector(".error");
     error.style.display = "block";

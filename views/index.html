@@ -1,30 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head id="head" />
-    <script src="js/HttpClient.js"></script>
-    <script src="js/html.js"></script>
-    <script src="js/dom.js"></script>
-    <script src="js/form.js"></script>
-    <script>
-      fetchHead();
-      fetchNav();
-    </script>
+  <head id="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/nav.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/login.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/modal.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/validator.css" type="text/css" media="screen">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es7-shim/6.0.0/es7-shim.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  </head>
+  <script src="js/HttpClient.js"></script>
+  <script src="js/Modal.js"></script>
+  <script src="js/html.js"></script>
+  <script src="js/dom.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/pages/index.js"></script>
+  <script src="js/pages/login.js"></script>
+  <script src="js/pages/register.js"></script>
 
+  <ul class="nav">
+    <li><a onclick="onNavItemClick('/Pira/views/'); return false;" href="#"><i class="fas fa-home"></i></a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn"><i class="far fa-clipboard"></i> Boards</a>
+      <div class="dropdown-content">
+        <a class="createButton" href="#">Create Board</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </li>
+    <li class="nav-title"><a onclick="onNavItemClick('/Pira/views/'); return false;" href="#"><i class="far fa-clipboard"></i> Pira</a></li>
+    <div class="right-nav">
+      <li class="register"><a onclick="onNavItemClick('/Pira/views/register'); return false;" href="#"><i class="fas fa-user-plus"></i></a></li>
+      <li class="login"><a onclick="onNavItemClick('/Pira/views/login'); return false; "href="#"><i class="fas fa-sign-in-alt"></i></a></li>
+      <li class="logout"><a onclick="logoutClick(); onNavItemClick('/Pira/views/login'); return false;"href="#"><i class="fas fa-sign-out-alt"></i></a></li>
+    </div>
+  </ul>
+
+  <div id="simpleModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="closeBtn">&times;</span>
+        <h2>Create board</h2>
+      </div>
+      <div class="modal-body">
+        <form id="create-board-form" accept-charset="utf-8">
+          <label for="title">Title</label><br />
+          <input type="text" name="title" id="title" placeholder="Enter title here..." />
+          <label for="team">Team</label><br />
+          <select id="select-team">
+          </select>
+          <label for="lead">Lead</label><br />
+          <select id="select-lead">
+          </select>
+        </form>
+      </div>
+      <button type="submit" class="modal-footer" id="submit-board">
+        <h3>Create board</h3>
+      </button>
+    </div>
+  </div>
+
+  <body>
     <div id="content" />
-      <table id="board-table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Team</th>
-            <th>Lead</th>
-            <th>Created At</th>
-            <th class="board-id">Id</th>
-          </tr>
-        </thead>
-        <tbody id="board-table-body"></tbody>
-      </table>
-      <script>
-        document.addEventListener('DOMContentLoaded', showBoards);
-      </script>
+
+    <script src="js/router.js"></script>
+    <script src="js/nav.js"></script>
   </body>
 </html>

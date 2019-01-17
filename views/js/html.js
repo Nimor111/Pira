@@ -1,16 +1,3 @@
-function fetchHead() {
-  fetch("partials/head.html")
-    .then(res => {
-      return res.text();
-    })
-    .then(html => {
-      document.getElementById("head").innerHTML = html;
-    })
-    .catch(err => {
-      console.log(err);
-    });
-}
-
 function fetchNav() {
   fetch("partials/nav.html")
     .then(res => res.text())
@@ -25,8 +12,6 @@ function fetchNav() {
       navScript.src = "js/nav.js";
       document.body.appendChild(modalScript);
       document.body.appendChild(navScript);
-
-      checkLogin();
     })
     .catch(err => {
       console.log(err);

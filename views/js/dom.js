@@ -76,14 +76,13 @@ function checkLogin() {
     login.style.display = "none";
     register.style.display = "none";
     logout.style.display = "block";
-    logout.addEventListener("click", logoutClick);
   } else {
     login.style.display = "block";
     register.style.display = "block";
+    logout.style.display = "none";
   }
 }
 
 function logoutClick() {
   localStorage.removeItem("credentials");
-  window.location.replace("login.html");
 }

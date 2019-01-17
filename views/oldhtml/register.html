@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head id="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/nav.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/login.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/modal.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/validator.css" type="text/css" media="screen">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es7-shim/6.0.0/es7-shim.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  </head>
+  <script src="js/HttpClient.js"></script>
+  <script src="js/dom.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/html.js"></script>
+  <script>
+    fetchNav();
+  </script>
+
+  <body>
+    <div id="login-content">
+      <h1>Register</h1>
+      <div class="error">
+        <span class="close-error" onclick="hideErrorMessage(this.parentElement)">&times;</span>
+        <strong>Error: </strong>Invalid email or password!
+      </div>
+      <form id="register-form">
+        <label for="register-email">Email</label>
+        <input type="text" name="register-email" id="register-email" placeholder="Enter email here..." />
+        <label for="register-username">Username</label>
+        <input type="text" name="register-username" id="register-username" placeholder="Enter username here..." />
+        <label for="register-password">Password</label>
+        <input type="password" name="register-password" id="register-password" placeholder="Enter password here..." />
+      </form>
+      <button type="submit" id="register-button" class="modal-footer">Register</button>
+    </div>
+    <script>
+      const registerButton = document.getElementById("register-button");
+      registerButton.addEventListener("click", register);
+      document.addEventListener("keyup", function(event) {
+        event.preventDefault();
+
+        if (event.keyCode === 13) {
+          registerButton.click();
+        }
+      });
+    </script>
+  </body>
+</html>
