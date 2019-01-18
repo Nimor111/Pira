@@ -6,7 +6,7 @@ const homepage = `
       <th>Team</th>
       <th>Lead</th>
       <th>Created At</th>
-      <th class="board-id">Id</th>
+      <th class="hidden-id">Id</th>
     </tr>
   </thead>
   <tbody id="board-table-body"></tbody>

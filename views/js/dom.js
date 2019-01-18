@@ -9,11 +9,17 @@ function populateBoards(boards) {
       const row = document.createElement("tr");
 
       row.innerHTML = `
-    <td>${board.title}</td>
+      <td><a onclick="onDetailClick(${
+        board.id
+      }, '/Pira/views/board/:id/detail', {id: ${
+        board.id
+      }}); return false;" href="#"><i class="fas fa-image"></i></a> ${
+        board.title
+      }</td>
     <td>${board.team}</td>
     <td>${board.lead.username}</td>
     <td>${board.created_at}</td>
-    <td class="board-id">${board.id}</td>
+    <td class="hidden-id">${board.id}</td>
     `;
 
       tbody.appendChild(row);
