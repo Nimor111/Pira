@@ -1,9 +1,7 @@
 let contentDiv = document.getElementById("content");
 
 const routes = {
-  "/Pira/views": homepage,
   "/Pira/views/": homepage,
-  "/Pira/views/index.html": homepage,
   "/Pira/views/login": loginPage,
   "/Pira/views/register": registerPage,
   "/Pira/views/board/:id/detail": boardDetailPage
