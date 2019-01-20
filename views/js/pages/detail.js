@@ -15,16 +15,7 @@ const boardDetailPage = `
     </div>
   </div>
   <script>
-    const collapsible = document.querySelector('.collapsible-<%this.lists[list].id%>');
-    collapsible.addEventListener("click", () => {
-      collapsible.classList.toggle("active");
-      const content = collapsible.nextElementSibling;
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    });
+    collapseList(<% this.lists[list].id %>);
   </script>
   <%}%>
   </div>

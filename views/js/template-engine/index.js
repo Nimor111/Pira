@@ -22,8 +22,6 @@ const TemplateEngine = function(template, data) {
   add(template.substr(cursor, template.length - cursor));
   code += 'return r.join("");';
 
-  console.log(code);
-
   return new Function(code.replace(/[\r\t\n]/g, "")).apply(data);
 };
 
@@ -46,13 +44,13 @@ var diffTemplate =
   "<p>none</p>" +
   "<%}%>";
 
-console.log(
-  TemplateEngine(diffTemplate, {
-    skills: ["js", "html", "css"],
-    showSkills: true
-    // name: "Georgi",
-    // profile: {
-    //   age: 22
-    // }
-  })
-);
+// console.log(
+//   TemplateEngine(diffTemplate, {
+//     skills: ["js", "html", "css"],
+//     showSkills: true
+//     // name: "Georgi",
+//     // profile: {
+//     //   age: 22
+//     // }
+//   })
+// );
