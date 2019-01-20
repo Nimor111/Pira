@@ -20,11 +20,7 @@ let onDetailClick = (id, pathname, data) => {
   const replaced = pathname.replace(/[0-9]+/g, ":id");
   const route = routes[pathname];
   pathname = pathname.replace(":id", id);
-  window.history.pushState(
-    {id: id},
-    pathname,
-    window.location.origin + pathname
-  );
+  window.history.pushState(data, pathname, window.location.origin + pathname);
 
   insertHtml(route, data);
   checkLogin();
@@ -39,7 +35,7 @@ let onNavItemClick = pathname => {
 
 window.onpopstate = event => {
   const replaced = window.location.pathname.replace(/[0-9]+/g, ":id");
-  const data = event.state ? {id: event.state.id} : {};
+  const data = event.state ? event.state : {};
   insertHtml(routes[replaced], data);
   checkLogin();
 };

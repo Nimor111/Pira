@@ -29,7 +29,7 @@ class Modal {
     this.modal.style.display = "none";
   }
 
-  clickOutside() {
+  clickOutside(event) {
     if (event.target === this.modal) {
       this.modal.style.display = "none";
     }

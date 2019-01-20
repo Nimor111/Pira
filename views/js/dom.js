@@ -5,24 +5,30 @@ function populateBoards(boards) {
   }
 
   if (boards.data) {
-    boards.data.forEach(board => {
+    boards.data.forEach(async board => {
       const row = document.createElement("tr");
+      let lists = await HttpClient.getById("/board/lists", board.id);
 
       row.innerHTML = `
-      <td><a onclick="onDetailClick(${
+      <td><a class="board-detail" id="board-id-${
         board.id
-      }, '/Pira/views/board/:id/detail', {id: ${
-        board.id
-      }}); return false;" href="#"><i class="fas fa-image"></i></a> ${
-        board.title
-      }</td>
-    <td>${board.team}</td>
-    <td>${board.lead.username}</td>
-    <td>${board.created_at}</td>
-    <td class="hidden-id">${board.id}</td>
-    `;
+      }"><i class="fas fa-image"></i></a> ${board.title}</td>
+      <td>${board.team}</td>
+      <td>${board.lead.username}</td>
+      <td>${board.created_at}</td>
+      <td class="hidden-id">${board.id}</td>
+      `;
 
       tbody.appendChild(row);
+      const a = document.getElementById(`board-id-${board.id}`);
+      const data = {
+        id: board.id,
+        title: board.title,
+        lists: lists.data ? lists.data : []
+      };
+      a.addEventListener("click", () =>
+        onDetailClick(board.id, "/Pira/views/board/:id/detail", data)
+      );
     });
   }
 }

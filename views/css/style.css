@@ -44,3 +44,7 @@ input[type="password"] {
   padding-top: 6em;
   margin: 1em;
 }
+
+.createButton:hover {
+  cursor: pointer;
+}

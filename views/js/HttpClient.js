@@ -6,6 +6,14 @@ class HttpClient {
     return data;
   }
 
+  static async getById(resource, id) {
+    const res = await fetch(`/Pira/routes/${resource}.php?id=${id}`);
+
+    const data = await res.json();
+
+    return data;
+  }
+
   static async login(data) {
     const res = await fetch(`/Pira/routes/user/login.php`, {
       method: "POST",
@@ -31,7 +39,6 @@ class HttpClient {
       },
       body: JSON.stringify(data)
     });
-
     if (res.status === 400) {
       return false;
     }
