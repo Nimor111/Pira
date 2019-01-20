@@ -39,7 +39,7 @@ async function login() {
   const status = await HttpClient.login(data);
 
   if (status) {
-    onNavItemClick("/Pira/views");
+    onNavItemClick("/Pira/views/");
   } else {
     const error = document.querySelector(".error");
     error.style.display = "block";

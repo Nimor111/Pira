@@ -6,3 +6,19 @@
   color: blue;
   cursor: pointer;
 }
+
+[class*="collapsible-"] {
+  cursor: pointer;
+}
+
+.collapsible-plus {
+  float: right;
+}
+
+.card-dropdown-content {
+  padding: 0 18px;
+  transition: max-height 0.2s ease-out;
+  overflow: hidden;
+  color: #fff;
+  max-height: 0;
+}

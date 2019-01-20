@@ -12,18 +12,14 @@ const registerPage = `
     <input type="text" name="register-username" id="register-username" placeholder="Enter username here..." />
     <label for="register-password">Password</label>
     <input type="password" name="register-password" id="register-password" placeholder="Enter password here..." />
+    <button type="submit" id="register-button" class="modal-footer">Register</button>
   </form>
-  <button type="submit" id="register-button" class="modal-footer">Register</button>
 </div>
 <script>
-  const registerButton = document.getElementById("register-button");
-  registerButton.addEventListener("click", register);
-  document.addEventListener("keyup", function(event) {
+  const registerButton = document.getElementById("register-form");
+  registerButton.addEventListener("submit", event => {
     event.preventDefault();
-
-    if (event.keyCode === 13) {
-      registerButton.click();
-    }
+    register();
   });
 </script>
 `;

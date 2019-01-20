@@ -10,18 +10,14 @@ const loginPage = `
     <input type="text" name="login-email" id="login-email" placeholder="Enter email here..." />
     <label for="login-password">Password</label>
     <input type="password" name="login-password" id="login-password" placeholder="Enter password here..." />
+    <button type="submit" id="login-button" class="modal-footer">Login</button>
   </form>
-  <button type="submit" id="login-button" class="modal-footer">Login</button>
 </div>
 <script>
-  const loginButton = document.getElementById("login-button");
-  loginButton.addEventListener("click", login);
-  document.addEventListener("keyup", function(event) {
+  const loginButton = document.getElementById("login-form");
+  loginButton.addEventListener("submit", event => {
     event.preventDefault();
-
-    if (event.keyCode === 13) {
-      loginButton.click();
-    }
+    login();
   });
 </script>
 `;

@@ -1,0 +1,60 @@
+.grid-container {
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* border between all elements inside grid */
+.grid-container * {
+  box-sizing: border-box;
+}
+
+/*-- prevents columns in row from overflowing to other rows -- */
+.row:before,
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+[class*="col-"] {
+  float: left;
+  min-height: 1px;
+  width: 16.66%;
+  /* -- dist between cols -- */
+  padding: 12px;
+  background-color: #026aa7;
+}
+
+.col-1 {
+  width: 16.66%;
+}
+.col-2 {
+  width: 33.33%;
+}
+.col-3 {
+  width: 50%;
+}
+.col-4 {
+  width: 66.66%;
+}
+.col-5 {
+  width: 83.33%;
+}
+.col-6 {
+  width: 100%;
+}
+
+.outline,
+.outline .row,
+.outline [class*="col-"] {
+  outline: 1px solid #fff;
+}
+
+/*-- some extra column content styling --*/
+[class*="col-"] > p {
+  background-color: #026aa7;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}

@@ -16,7 +16,7 @@ function insertHtml(html, data = {}) {
   }
 }
 
-let onDetailClick = (id, pathname, data) => {
+const onDetailClick = (id, pathname, data) => {
   const replaced = pathname.replace(/[0-9]+/g, ":id");
   const route = routes[pathname];
   pathname = pathname.replace(":id", id);
@@ -26,7 +26,7 @@ let onDetailClick = (id, pathname, data) => {
   checkLogin();
 };
 
-let onNavItemClick = pathname => {
+const onNavItemClick = pathname => {
   window.history.pushState({}, pathname, window.location.origin + pathname);
 
   insertHtml(routes[pathname]);

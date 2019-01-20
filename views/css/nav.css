@@ -35,7 +35,7 @@ ul.nav li a:hover,
   background-color: #014a75;
 }
 
-ul.nav li.dropdown {
+ul.nav .dropdown {
   display: inline-block;
 }
 

@@ -36,8 +36,8 @@
       FROM ' . $this->table . ' l
       INNER JOIN cards c
       ON l.id = c.list
-      INNER JOIN developers d
-      ON d.id = c.assignee
+      INNER JOIN developers a
+      ON a.id = c.assignee
       WHERE l.id = :id
       ORDER BY c.id ASC
       ';

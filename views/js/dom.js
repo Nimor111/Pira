@@ -1,13 +1,12 @@
-function populateBoards(boards) {
+function populateBoards(boards, lists, cards) {
   const tbody = document.getElementById("board-table-body");
   while (tbody.firstChild) {
     tbody.removeChild(tbody.firstChild);
   }
 
   if (boards.data) {
-    boards.data.forEach(async board => {
+    boards.data.forEach((board, idx) => {
       const row = document.createElement("tr");
-      let lists = await HttpClient.getById("/board/lists", board.id);
 
       row.innerHTML = `
       <td><a class="board-detail" id="board-id-${
@@ -24,7 +23,9 @@ function populateBoards(boards) {
       const data = {
         id: board.id,
         title: board.title,
-        lists: lists.data ? lists.data : []
+        lead: board.lead.username,
+        team: board.team,
+        lists: !lists[idx].data ? [] : lists[idx].data
       };
       a.addEventListener("click", () =>
         onDetailClick(board.id, "/Pira/views/board/:id/detail", data)
@@ -63,9 +64,37 @@ function populateUsers(users) {
   });
 }
 
+async function showBoardLists(boards) {
+  let lists = {};
+  if (boards.data) {
+    for (let i = 0; i < boards.data.length; i++) {
+      const l = await HttpClient.getById("/board/lists", boards.data[i].id);
+      lists[i] = l;
+    }
+  }
+
+  return lists;
+}
+
+async function showListCards(lists) {
+  for (let i = 0; i < Object.keys(lists).length; i++) {
+    if (lists[i].data) {
+      for (let j = 0; j < lists[i].data.length; j++) {
+        const c = await HttpClient.getById("/list/cards", lists[i].data[j].id);
+        lists[i].data[j].cards = c;
+      }
+    }
+  }
+
+  return lists;
+}
+
 async function showBoards() {
   const boards = await HttpClient.get("board");
-  populateBoards(boards);
+  let lists = await showBoardLists(boards);
+  lists = await showListCards(lists);
+
+  populateBoards(boards, lists);
 }
 
 async function showTeams() {
