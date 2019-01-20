@@ -24,6 +24,7 @@
       SELECT c.id,c.title,c.description,c.list,c.created_at,a.email,a.username
       FROM ' . $this->table . ' c
       INNER JOIN developers a ON c.assignee = a.id
+      ORDER BY c.id ASC
       ';
 
       // prepare statement

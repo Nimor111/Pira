@@ -39,6 +39,7 @@
       INNER JOIN developers d
       ON d.id = c.assignee
       WHERE l.id = :id
+      ORDER BY c.id ASC
       ';
 
       // prepare statement

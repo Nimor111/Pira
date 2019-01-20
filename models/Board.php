@@ -24,6 +24,7 @@
       FROM ' . $this->table . ' b
       INNER JOIN developers d ON b.lead = d.id
       INNER JOIN teams t ON t.id = b.team
+      ORDER BY b.id ASC
       ';
 
       // prepare statement

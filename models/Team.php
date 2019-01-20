@@ -24,6 +24,7 @@
       INNER JOIN developers d
       ON d.id = b.lead
       WHERE t.id = :id
+      ORDER BY b.id ASC
       ';
 
       // prepare statement
