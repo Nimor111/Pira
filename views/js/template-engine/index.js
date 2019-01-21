@@ -1,6 +1,6 @@
 const TemplateEngine = function(template, data) {
   let re = /<%([^%>]+)?%>/g,
-    keywords = /(^(  )?(if|for|else|switch|case|break|{|}))(.*)?/g,
+    keywords = /(^(  )?(var|let|const|if|for|else|switch|case|break|{|}))(.*)?/g,
     code = "let r = [];\n",
     cursor = 0;
   let match;

@@ -1,9 +1,57 @@
+async function createCard(boardId) {
+  const form = document.getElementById("create-card-form"),
+    title = form.elements[0].value,
+    description = form.elements[1].value,
+    assigneeSelect = document.getElementById("select-assignee"),
+    assignee = assigneeSelect.options[assigneeSelect.selectedIndex].value,
+    listSelect = document.getElementById("select-list"),
+    list = listSelect.options[listSelect.selectedIndex].value;
+
+  const users = await HttpClient.get("user");
+
+  const lists = await HttpClient.getById("/board/lists", boardId);
+
+  const userId = users.data.find(u => u.username === assignee).id;
+  const listId = lists.data.find(l => l.name === list).id;
+
+  const data = {
+    title: title,
+    description: description,
+    list: listId,
+    assignee: userId
+  };
+
+  await HttpClient.post("card", data);
+
+  clearFields([title, description]);
+
+  const pageData = await getBoardData(boardId);
+
+  onDetailClick(boardId, "/Pira/views/board/:id/detail", pageData);
+
+  document.getElementById("createCardModal").style.display = "none";
+}
+
+async function createList(id) {
+  const form = document.getElementById("create-list-form");
+  const name = form.elements[0].value;
+
+  const data = {name, board: id};
+
+  await HttpClient.post("list", data);
+
+  clearFields([name]);
+
+  const pageData = await getBoardData(id);
+
+  onDetailClick(id, "/Pira/views/board/:id/detail", pageData);
+
+  document.getElementById("createListModal").style.display = "none";
+}
+
 async function createBoard() {
   const form = document.getElementById("create-board-form");
   const title = document.getElementById("title");
-  if (title === "") {
-    return;
-  }
   const teamSelect = document.getElementById("select-team");
   const team = teamSelect.options[teamSelect.selectedIndex].value;
   const userSelect = document.getElementById("select-lead");
@@ -25,7 +73,7 @@ async function createBoard() {
 
   showBoards();
 
-  createBoardModal.closeModal();
+  document.getElementById("board-modal").style.display = "none";
 }
 
 async function login() {

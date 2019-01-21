@@ -1,10 +1,8 @@
 class Modal {
   constructor(id, openBtn, closeBtn) {
     this.modal = document.getElementById(id);
-    this.openBtn =
-      document.getElementById(openBtn) || document.querySelector(openBtn);
-    this.closeBtn =
-      document.getElementById(closeBtn) || document.querySelector(closeBtn);
+    this.openBtn = document.getElementById(openBtn);
+    this.closeBtn = document.getElementById(closeBtn);
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);

@@ -29,7 +29,7 @@
     <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn"><i class="far fa-clipboard"></i> Boards</a>
       <div class="dropdown-content">
-        <a class="createButton">Create Board</a>
+        <a id="create-board" class="createButton">Create Board</a>
       </div>
     </li>
     <li class="nav-title"><a onclick="onNavItemClick('/Pira/views/'); return false;" href="#"><i class="far fa-clipboard"></i> Pira</a></li>
@@ -40,10 +40,10 @@
     </div>
   </ul>
 
-  <div id="simpleModal" class="modal">
+  <div id="board-modal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="closeBtn">&times;</span>
+        <span id="board-close-btn" class="closeBtn">&times;</span>
         <h2>Create board</h2>
       </div>
       <div class="modal-body">
@@ -65,11 +65,12 @@
   </div>
 
   <body>
+    <script src="js/scripts.js"></script>
+
+    <script>nav();</script>
+
     <div id="content" />
 
     <script src="js/router.js"></script>
-    <script src="js/scripts.js"></script>
-
-    <script>const createBoardModal = nav();</script>
   </body>
 </html>

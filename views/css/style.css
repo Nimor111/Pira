@@ -40,6 +40,16 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  resize: none;
+  border: 1px solid #ccc;
+}
+
 #content {
   padding-top: 6em;
   margin: 1em;

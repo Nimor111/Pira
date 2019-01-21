@@ -22,3 +22,19 @@
   color: #fff;
   max-height: 0;
 }
+
+.board-actions {
+  text-align: center;
+}
+
+.board-actions button {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #026aa7;
+  border: none;
+  color: #fff;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+}

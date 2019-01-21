@@ -49,8 +49,23 @@ function populateTeams(teams) {
   });
 }
 
-function populateUsers(users) {
-  const select = document.getElementById("select-lead");
+function populateLists(lists, element) {
+  const select = document.getElementById(element);
+  while (select.firstChild) {
+    select.removeChild(select.firstChild);
+  }
+
+  lists.data.forEach(list => {
+    const option = document.createElement("option");
+    option.value = list.name;
+    const text = document.createTextNode(list.name);
+    option.appendChild(text);
+    select.appendChild(option);
+  });
+}
+
+function populateUsers(users, element) {
+  const select = document.getElementById(element);
   while (select.firstChild) {
     select.removeChild(select.firstChild);
   }
@@ -62,6 +77,27 @@ function populateUsers(users) {
     option.appendChild(text);
     select.appendChild(option);
   });
+}
+
+async function getBoardData(id) {
+  const board = await HttpClient.getSingle("board", id);
+  const lists = await HttpClient.getById("/board/lists", id);
+  for (let i = 0; i < lists.data.length; i++) {
+    lists.data[i].cards = await HttpClient.getById(
+      "/list/cards",
+      lists.data[i].id
+    );
+  }
+
+  const data = {
+    id: board.id,
+    title: board.title,
+    lead: board.lead.username,
+    team: board.team,
+    lists: lists.data ? lists.data : []
+  };
+
+  return data;
 }
 
 async function showBoardLists(boards) {
@@ -102,10 +138,15 @@ async function showTeams() {
   populateTeams(teams);
 }
 
+async function showListsByBoardId(boardId, element) {
+  const lists = await HttpClient.getById("/board/lists", boardId);
+  populateLists(lists, element);
+}
+
 // TODO show team members when relation has been added
-async function showUsers() {
+async function showUsers(element) {
   const users = await HttpClient.get("user");
-  populateUsers(users);
+  populateUsers(users, element);
 }
 
 function checkLogin() {
