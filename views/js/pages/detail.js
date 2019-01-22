@@ -24,12 +24,17 @@ const boardDetailPage = `
               <div class="modal-body">
                 <h3>Description</h3>
                 <p><% this.lists[list].cards.data[card].description %></p>
+                <form id="card-list-form-<% this.lists[list].cards.data[card].id %>" accept-charset="utf-8">
+                  <h3>List</h3>
+                  <select id="select-list-<% this.lists[list].cards.data[card].id%>">
+                  </select>
+                </form>
               </div>
-              <button type="button" class="modal-footer"></button>
+              <button type="submit" id="update-card-<% this.lists[list].cards.data[card].id %>"class="modal-footer">Update card</button>
             </div>
           </div>
           <script>
-            cardModal(<%this.lists[list].cards.data[card].id%>);
+            cardModal(<%this.lists[list].cards.data[card].id%>, <%this.id%>);
           </script>
         <%}%>
       </div>

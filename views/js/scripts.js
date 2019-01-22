@@ -15,14 +15,21 @@ function nav() {
   createBtn.addEventListener("click", createBoard);
 }
 
-function cardModal(id) {
+function cardModal(id, boardId) {
   const cardModal = new Modal(
     `card-modal-${id}`,
     `show-card-${id}`,
     `card-close-btn-${id}`
   );
 
-  cardModal.addEventListeners([cardModal.openModal]);
+  cardModal.addEventListeners([
+    cardModal.openModal,
+    () => showListsByBoardId(boardId, `select-list-${id}`)
+  ]);
+
+  document
+    .getElementById(`update-card-${id}`)
+    .addEventListener("click", () => updateCardList(id, boardId));
 }
 
 function boardDetailModals(id) {

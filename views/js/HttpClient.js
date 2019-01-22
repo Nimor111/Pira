@@ -24,6 +24,19 @@ class HttpClient {
     return data;
   }
 
+  static async patch(resource, id, data) {
+    console.log("DATA: ", data);
+    const res = await fetch(`/Pira/routes/${resource}/patch.php?id=${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    return await res.json();
+  }
+
   static async login(data) {
     const res = await fetch(`/Pira/routes/user/login.php`, {
       method: "POST",

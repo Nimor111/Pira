@@ -114,6 +114,33 @@
       return false;
     }
 
+    public function patch(): bool {
+      // create query
+      $query = '
+      UPDATE ' . $this->table . '
+      SET
+        list = :list
+      WHERE
+        id = :id
+      ';
+
+      $stmt = $this->connection->prepare($query);
+
+      $this->list = htmlspecialchars(strip_tags($this->list));
+      // bind data
+      $stmt->bindParam(':list', $this->list);
+      $stmt->bindParam(':id', $this->id);
+
+      if($stmt->execute()) {
+        return true;
+      }
+
+      // Print error if something goes wrong
+      printf("Error: %s. \n", $stmt->error);
+
+      return false;
+    }
+
     public function update(): bool {
       // create query
       $query = '

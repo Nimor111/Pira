@@ -113,6 +113,26 @@
       }
     }
 
+    public function patch(string $id, object $data) {
+      // Set ID to be updated
+      $this->card->id = $id;
+
+      $this->card->list = $data->list;
+
+      // Update card list
+      if($this->card->patch()) {
+        http_response_code(200);
+        echo json_encode(
+          array('message' => 'Card updated!')
+        );
+      } else {
+        http_response_code(400);
+        echo json_encode(
+          array('message' => 'Card not updated!')
+        );
+      }
+    }
+
     public function delete(object $data) {
       // Set ID to be deleted
       $this->card->id = $data->id;

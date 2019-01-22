@@ -49,6 +49,24 @@ async function createList(id) {
   document.getElementById("createListModal").style.display = "none";
 }
 
+async function updateCardList(id, boardId) {
+  const form = document.getElementById(`card-list-form-${id}`);
+  const listSelect = form.elements[0];
+  const list = listSelect.options[listSelect.selectedIndex].value;
+
+  const lists = await HttpClient.getById("/board/lists", boardId);
+  const listId = lists.data.find(l => l.name === list).id;
+
+  const data = {list: listId};
+  await HttpClient.patch("card", id, data);
+
+  const pageData = await getBoardData(boardId);
+
+  onDetailClick(boardId, "/Pira/views/#/board/:id/detail", pageData);
+
+  document.getElementById(`card-modal-${id}`).style.display = "none";
+}
+
 async function createBoard() {
   const form = document.getElementById("create-board-form");
   const title = document.getElementById("title");
