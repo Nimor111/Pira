@@ -25,7 +25,6 @@ class HttpClient {
   }
 
   static async patch(resource, id, data) {
-    console.log("DATA: ", data);
     const res = await fetch(`/Pira/routes/${resource}/patch.php?id=${id}`, {
       method: "PATCH",
       headers: {
