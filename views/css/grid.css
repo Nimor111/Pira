@@ -1,6 +1,8 @@
 .grid-container {
-  width: 100%;
-  max-width: 1400px;
+}
+
+.scroller {
+  white-space: nowrap;
 }
 
 /* border between all elements inside grid */
@@ -17,16 +19,15 @@
 }
 
 [class*="col-"] {
-  float: left;
+  /* float: left; */
   min-height: 1px;
-  width: 16.66%;
-  /* -- dist between cols -- */
   padding: 12px;
   background-color: #026aa7;
 }
 
 .col-1 {
-  width: 16.66%;
+  display: inline-block;
+  width: 300px;
 }
 .col-2 {
   width: 33.33%;
@@ -53,7 +54,6 @@
 /*-- some extra column content styling --*/
 [class*="col-"] > p {
   background-color: #026aa7;
-  padding: 0;
   margin: 0;
   text-align: center;
   color: #fff;
