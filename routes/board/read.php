@@ -6,9 +6,10 @@
 
   include_once '../../config/Database.php';
   include_once '../../controllers/BoardController.php';
+  include_once '../../config/credentials.php';
 
   // Init db
-  $database = new Database('localhost', 'pira', 'root', '');
+  $database = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
   $conn = $database->connect();
 
   // Get boards
