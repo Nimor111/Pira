@@ -15,6 +15,16 @@ function nav() {
   createBtn.addEventListener("click", createBoard);
 }
 
+function cardModal(id) {
+  const cardModal = new Modal(
+    `card-modal-${id}`,
+    `show-card-${id}`,
+    `card-close-btn-${id}`
+  );
+
+  cardModal.addEventListeners([cardModal.openModal]);
+}
+
 function boardDetailModals(id) {
   const listModal = new Modal(
     "createListModal",

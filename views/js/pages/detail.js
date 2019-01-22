@@ -11,10 +11,26 @@ const boardDetailPage = `
   <div class="scroller">
     <%for(let list in this.lists) {%>
     <div class="col-1 collapsible">
-      <p class="collapsible-<%this.lists[list].id%>"><%this.lists[list].name%> <span class="collapsible-plus">+</span></p>
+      <p class="collapsible-<%this.lists[list].id%>"><%this.lists[list].name%></p>
       <div class="inner-collapsible">
         <%for(let card in this.lists[list].cards.data) {%>
-          <div class="card-dropdown-content"><% this.lists[list].cards.data[card].title %></div>
+        <div class="card-dropdown-content" id="show-card-<%this.lists[list].cards.data[card].id%>"><% this.lists[list].cards.data[card].title %></div>
+          <div id="card-modal-<%this.lists[list].cards.data[card].id%>" class="modal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <span id="card-close-btn-<%this.lists[list].cards.data[card].id%>"" class="closeBtn"">&times;</span>
+                <h2><% this.lists[list].cards.data[card].title %></h2>
+              </div>
+              <div class="modal-body">
+                <h3>Description</h3>
+                <p><% this.lists[list].cards.data[card].description %></p>
+              </div>
+              <button type="button" class="modal-footer"></button>
+            </div>
+          </div>
+          <script>
+            cardModal(<%this.lists[list].cards.data[card].id%>);
+          </script>
         <%}%>
       </div>
     </div>
