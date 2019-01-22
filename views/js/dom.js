@@ -28,7 +28,7 @@ function populateBoards(boards, lists, cards) {
         lists: !lists[idx].data ? [] : lists[idx].data
       };
       a.addEventListener("click", () =>
-        onDetailClick(board.id, "/Pira/views/board/:id/detail", data)
+        onDetailClick(board.id, "/Pira/views/#/board/:id/detail", data)
       );
     });
   }

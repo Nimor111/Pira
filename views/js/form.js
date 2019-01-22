@@ -27,7 +27,7 @@ async function createCard(boardId) {
 
   const pageData = await getBoardData(boardId);
 
-  onDetailClick(boardId, "/Pira/views/board/:id/detail", pageData);
+  onDetailClick(boardId, "/Pira/views/#/board/:id/detail", pageData);
 
   document.getElementById("createCardModal").style.display = "none";
 }
@@ -44,7 +44,7 @@ async function createList(id) {
 
   const pageData = await getBoardData(id);
 
-  onDetailClick(id, "/Pira/views/board/:id/detail", pageData);
+  onDetailClick(id, "/Pira/views/#/board/:id/detail", pageData);
 
   document.getElementById("createListModal").style.display = "none";
 }
@@ -109,7 +109,7 @@ async function register() {
   const status = await HttpClient.register(data);
 
   if (status) {
-    onNavItemClick("/Pira/views/login");
+    onNavItemClick("/Pira/views/#/login");
   } else {
     const error = document.querySelector(".error");
     error.style.display = "block";

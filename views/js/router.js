@@ -2,9 +2,9 @@ let contentDiv = document.getElementById("content");
 
 const routes = {
   "/Pira/views/": homepage,
-  "/Pira/views/login": loginPage,
-  "/Pira/views/register": registerPage,
-  "/Pira/views/board/:id/detail": boardDetailPage
+  "/Pira/views/#/login": loginPage,
+  "/Pira/views/#/register": registerPage,
+  "/Pira/views/#/board/:id/detail": boardDetailPage
 };
 
 function insertHtml(html, data = {}) {
@@ -17,7 +17,6 @@ function insertHtml(html, data = {}) {
 }
 
 const onDetailClick = (id, pathname, data) => {
-  const replaced = pathname.replace(/[0-9]+/g, ":id");
   const route = routes[pathname];
   pathname = pathname.replace(":id", id);
   window.history.pushState(data, pathname, window.location.origin + pathname);
@@ -34,11 +33,14 @@ const onNavItemClick = pathname => {
 };
 
 window.onpopstate = event => {
-  const replaced = window.location.pathname.replace(/[0-9]+/g, ":id");
+  const path = window.location.pathname + window.location.hash;
+  const replaced = path.replace(/[0-9]+/g, ":id");
   const data = event.state ? event.state : {};
   insertHtml(routes[replaced], data);
   checkLogin();
 };
 
-insertHtml(routes[window.location.pathname]);
+const path = window.location.pathname + window.location.hash;
+const replaced = path.replace(/[0-9]+/g, ":id");
+insertHtml(routes[replaced]);
 checkLogin();
