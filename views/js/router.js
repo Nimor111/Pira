@@ -17,6 +17,11 @@ function insertHtml(html, data = {}) {
 }
 
 const onDetailClick = (id, pathname, data) => {
+  // TODO implement proper authorization, e.g. members of team can only access detail etc.
+  if (!localStorage.getItem("credentials")) {
+    return onNavItemClick("/Pira/views/#/login");
+  }
+
   const route = routes[pathname];
   pathname = pathname.replace(":id", id);
   window.history.pushState(data, pathname, window.location.origin + pathname);
