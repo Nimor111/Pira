@@ -38,20 +38,16 @@
     public function getSingleBoard(): bool {
       $query = '
       SELECT *
-      FROM
-        ' . $this->table . ' b
+      FROM ' . $this->table . ' b
       INNER JOIN developers d ON b.lead = d.id
-      WHERE
-        b.id = ?
-      LIMIT
-        0,1
+      WHERE b.id = :id
       ';
 
       // prepare stmt
       $stmt = $this->connection->prepare($query);
 
       // Bind id
-      $stmt->bindParam(1, $this->id);
+      $stmt->bindParam(':id', $this->id);
 
       // Execute
       $stmt->execute();

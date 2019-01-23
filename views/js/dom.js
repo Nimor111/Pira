@@ -75,11 +75,11 @@ function populateUsers(users, element) {
 
 async function getBoardData(id) {
   const board = await HttpClient.getSingle("board", id);
-  const lists = await HttpClient.getById("/board/lists", id);
+  const lists = await HttpClient.getById("board/lists", id);
   if (lists.data) {
     for (let i = 0; i < lists.data.length; i++) {
       lists.data[i].cards = await HttpClient.getById(
-        "/list/cards",
+        "list/cards",
         lists.data[i].id
       );
     }
@@ -108,7 +108,7 @@ async function showTeams() {
 }
 
 async function showListsByBoardId(boardId, element) {
-  const lists = await HttpClient.getById("/board/lists", boardId);
+  const lists = await HttpClient.getById("board/lists", boardId);
   populateLists(lists, element);
 }
 

@@ -54,7 +54,7 @@ async function updateCardList(id, boardId) {
   const listSelect = form.elements[0];
   const list = listSelect.options[listSelect.selectedIndex].value;
 
-  const lists = await HttpClient.getById("/board/lists", boardId);
+  const lists = await HttpClient.getById("board/lists", boardId);
   const listId = lists.data.find(l => l.name === list).id;
 
   const data = {list: listId};

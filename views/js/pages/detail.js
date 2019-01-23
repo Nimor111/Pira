@@ -34,7 +34,7 @@ const boardDetailPage = `
             </div>
           </div>
           <script>
-            cardModal(<%this.lists[list].cards.data[card].id%>, <%this.id%>);
+            cardModal(<% this.lists[list].cards.data[card].id %>, <% this.id %>);
           </script>
         <%}%>
       </div>

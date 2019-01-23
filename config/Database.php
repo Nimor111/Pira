@@ -20,10 +20,7 @@
         $this->connection = new PDO(
           'mysql:host=' . $this->host . ';dbname=' . $this->dbName,
           $this->username,
-          $this->password,
-          array(
-            PDO::ATTR_PERSISTENT => true
-          )
+          $this->password
         );
         // Set PDO to throw exceptions when queries go wrong
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

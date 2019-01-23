@@ -7,9 +7,7 @@ class HttpClient {
   }
 
   static async getSingle(resource, id) {
-    const res = await fetch(
-      `/Pira/routes/${resource}/read_single.php?id=${id}`
-    );
+    const res = await fetch(`/Pira/routes/${resource}/read_single.php?id=${id}`);
 
     const data = await res.json();
 
@@ -19,9 +17,7 @@ class HttpClient {
   static async getById(resource, id) {
     const res = await fetch(`/Pira/routes/${resource}.php?id=${id}`);
 
-    const data = await res.json();
-
-    return data;
+    return await res.json();
   }
 
   static async patch(resource, id, data) {
