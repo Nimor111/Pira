@@ -99,12 +99,16 @@ async function getBoardData(id) {
 async function showBoards() {
   const boards = await HttpClient.get("board");
 
-  populateBoards(boards);
+  if (boards.data) {
+    populateBoards(boards);
+  }
 }
 
 async function showTeams() {
   const teams = await HttpClient.get("team");
-  populateTeams(teams);
+  if (teams.data) {
+    populateTeams(teams);
+  }
 }
 
 async function showListsByBoardId(boardId, element) {
@@ -115,7 +119,9 @@ async function showListsByBoardId(boardId, element) {
 // TODO show team members when relation has been added
 async function showUsers(element) {
   const users = await HttpClient.get("user");
-  populateUsers(users, element);
+  if (users.data) {
+    populateUsers(users, element);
+  }
 }
 
 function checkLogin() {
