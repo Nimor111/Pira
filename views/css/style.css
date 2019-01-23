@@ -58,3 +58,7 @@ textarea {
 .createButton:hover {
   cursor: pointer;
 }
+
+.delete-board:hover {
+  cursor: pointer;
+}

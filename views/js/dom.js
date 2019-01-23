@@ -16,6 +16,9 @@ function populateBoards(boards) {
       <td>${board.lead.username}</td>
       <td>${board.created_at}</td>
       <td class="hidden-id">${board.id}</td>
+      <td><i id="delete-board-${
+        board.id
+      }" class="fas fa-trash delete-board"></i></td>
       `;
 
       tbody.appendChild(row);
@@ -24,6 +27,10 @@ function populateBoards(boards) {
       a.addEventListener("click", () =>
         onDetailClick(board.id, "/Pira/views/#/board/:id/detail", data)
       );
+
+      document
+        .getElementById(`delete-board-${board.id}`)
+        .addEventListener("click", () => deleteBoard(board.id));
     });
   }
 }

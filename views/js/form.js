@@ -138,6 +138,14 @@ async function register() {
   }
 }
 
+async function deleteBoard(id) {
+  const data = {id};
+
+  await HttpClient.delete("board", data);
+
+  showBoards();
+}
+
 function hideErrorMessage(error) {
   error.style.opacity = "0";
   setTimeout(() => {
