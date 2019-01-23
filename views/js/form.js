@@ -139,6 +139,10 @@ async function register() {
 }
 
 async function deleteBoard(id) {
+  if (!localStorage.getItem("credentials")) {
+    return onNavItemClick("/Pira/views/#/login");
+  }
+
   const data = {id};
 
   await HttpClient.delete("board", data);
