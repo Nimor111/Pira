@@ -1,3 +1,4 @@
+/**** MAIN STYLES ****/
 body {
   background-color: #f6f6f6;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
@@ -62,3 +63,265 @@ textarea {
 .delete-board:hover {
   cursor: pointer;
 }
+/**** MAIN STYLES ****/
+
+/**** NAVBAR ****/
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  position: fixed;
+  padding: 0;
+  top: 0;
+  width: 100%;
+  background-color: #026aa7;
+}
+
+ul.nav li:not(.nav-title) {
+  float: left;
+}
+
+ul.nav li.nav-title {
+  left: 45%;
+  position: absolute;
+}
+
+ul.nav div.right-nav {
+  float: right;
+}
+
+ul.nav li a,
+.dropbtn {
+  display: inline-block;
+  color: #fff;
+  padding: 14px 16px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+ul.nav li a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #014a75;
+}
+
+ul.nav .dropdown {
+  display: inline-block;
+}
+
+ul.nav .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+ul.nav .dropdown-content a {
+  color: #000;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+ul.nav .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+ul.nav li.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.logout {
+  display: none;
+}
+/**** NAVBAR ****/
+
+/**** BOARD DETAIL ****/
+.scroller {
+  white-space: nowrap;
+}
+
+.col-1 {
+  display: inline-block;
+  width: 300px;
+}
+
+/*-- some extra column content styling --*/
+[class*="col-"] > p {
+  background-color: #026aa7;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+}
+
+[class*="col-"] {
+  /* float: left; */
+  min-height: 1px;
+  padding: 12px;
+  background-color: #026aa7;
+}
+
+.board-detail-title {
+  text-align: center;
+  margin-top: -5px;
+}
+
+.board-detail {
+  color: blue;
+  cursor: pointer;
+}
+
+[class*="collapsible-"] {
+  cursor: pointer;
+}
+
+.collapsible-plus {
+  float: right;
+}
+
+.collapsible {
+  border-radius: 5px;
+  margin-right: 5px;
+  vertical-align: top;
+}
+
+.inner-collapsible {
+  overflow: auto;
+  max-height: 325px;
+  white-space: normal;
+}
+
+.card-dropdown-content {
+  margin-top: 10px;
+  margin-right: 5px;
+  border-radius: 2px;
+  padding: 20px 18px 20px;
+  color: #000;
+  background-color: #d3d3d3;
+  cursor: pointer;
+}
+
+.card-dropdown-content:hover {
+  opacity: 0.9;
+}
+
+.board-actions {
+  text-align: center;
+}
+
+.board-actions button {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #026aa7;
+  border: none;
+  color: #fff;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+}
+/**** BOARD DETAIL ****/
+
+/**** MODAL ****/
+.modal {
+  display: none;
+  position: fixed; /* stay in one place */
+  z-index: 1; /* sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* always full width */
+  height: 100%;
+  overflow: auto; /* enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #f4f4f4;
+  margin: 10% auto;
+  width: 70%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+  animation-name: modalopen;
+  animation-duration: 1s;
+}
+
+.modal-header h2,
+.modal-footer h3 {
+  margin: 0;
+}
+
+.modal-header {
+  background: #026aa7;
+  padding: 15px;
+  color: #fff;
+}
+
+.modal-body {
+  padding: 10px 20px;
+}
+
+.modal-footer {
+  background: #026aa7;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  border: 0;
+}
+
+.closeBtn {
+  color: #fff;
+  float: right;
+  font-size: 30px;
+  line-height: 20px;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/**** MODAL ****/
+
+/**** LOGIN ****/
+#login-content {
+  width: 50%;
+  margin: 0 auto;
+}
+
+/**** LOGIN ****/
+
+/**** ERROR MESSAGE ****/
+.error {
+  display: none;
+  padding: 20px;
+  margin: 10px 0;
+  background-color: #f44336;
+  opacity: 1;
+  transition: opacity 0.6s;
+  color: white;
+}
+
+.close-error {
+  margin-left: 15px;
+  color: white;
+  cursor: pointer;
+  float: right;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.close-error:hover {
+  color: #000;
+}
+/**** ERROR MESSAGE ****/
