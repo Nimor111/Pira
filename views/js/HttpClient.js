@@ -1,13 +1,15 @@
 class HttpClient {
   static async get(resource) {
-    const res = await fetch(`/Pira/routes/${resource}/read.php`);
+    const res = await fetch(`${PATH}/Pira/routes/${resource}/read.php`);
     const data = await res.json();
 
     return data;
   }
 
   static async getSingle(resource, id) {
-    const res = await fetch(`/Pira/routes/${resource}/read_single.php?id=${id}`);
+    const res = await fetch(
+      `${PATH}/Pira/routes/${resource}/read_single.php?id=${id}`
+    );
 
     const data = await res.json();
 
@@ -15,25 +17,28 @@ class HttpClient {
   }
 
   static async getById(resource, id) {
-    const res = await fetch(`/Pira/routes/${resource}.php?id=${id}`);
+    const res = await fetch(`${PATH}/Pira/routes/${resource}.php?id=${id}`);
 
     return await res.json();
   }
 
   static async patch(resource, id, data) {
-    const res = await fetch(`/Pira/routes/${resource}/patch.php?id=${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    });
+    const res = await fetch(
+      `${PATH}/Pira/routes/${resource}/patch.php?id=${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+    );
 
     return await res.json();
   }
 
   static async login(data) {
-    const res = await fetch(`/Pira/routes/user/login.php`, {
+    const res = await fetch(`${PATH}/Pira/routes/user/login.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -50,7 +55,7 @@ class HttpClient {
   }
 
   static async register(data) {
-    const res = await fetch(`/Pira/routes/user/register.php`, {
+    const res = await fetch(`${PATH}/Pira/routes/user/register.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -65,7 +70,7 @@ class HttpClient {
   }
 
   static async post(resource, data) {
-    const res = await fetch(`/Pira/routes/${resource}/create.php`, {
+    const res = await fetch(`${PATH}/Pira/routes/${resource}/create.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -77,7 +82,7 @@ class HttpClient {
   }
 
   static async put(resource, data) {
-    const res = await fetch(`/Pira/routes/${resource}/update.php`, {
+    const res = await fetch(`${PATH}/Pira/routes/${resource}/update.php`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -89,7 +94,7 @@ class HttpClient {
   }
 
   static async delete(resource, data) {
-    const res = await fetch(`/Pira/routes/${resource}/delete.php`, {
+    const res = await fetch(`${PATH}/Pira/routes/${resource}/delete.php`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json"
