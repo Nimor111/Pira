@@ -41,13 +41,15 @@ function populateTeams(teams) {
     select.removeChild(select.firstChild);
   }
 
-  teams.data.forEach(team => {
-    const option = document.createElement("option");
-    option.value = team.name;
-    const text = document.createTextNode(team.name);
-    option.appendChild(text);
-    select.appendChild(option);
-  });
+  if (teams.data) {
+    teams.data.forEach(team => {
+      const option = document.createElement("option");
+      option.value = team.name;
+      const text = document.createTextNode(team.name);
+      option.appendChild(text);
+      select.appendChild(option);
+    });
+  }
 }
 
 function populateLists(lists, element) {
@@ -56,13 +58,15 @@ function populateLists(lists, element) {
     select.removeChild(select.firstChild);
   }
 
-  lists.data.forEach(list => {
-    const option = document.createElement("option");
-    option.value = list.name;
-    const text = document.createTextNode(list.name);
-    option.appendChild(text);
-    select.appendChild(option);
-  });
+  if (lists.data) {
+    lists.data.forEach(list => {
+      const option = document.createElement("option");
+      option.value = list.name;
+      const text = document.createTextNode(list.name);
+      option.appendChild(text);
+      select.appendChild(option);
+    });
+  }
 }
 
 function populateUsers(users, element) {
@@ -71,13 +75,15 @@ function populateUsers(users, element) {
     select.removeChild(select.firstChild);
   }
 
-  users.data.forEach(user => {
-    const option = document.createElement("option");
-    option.value = user.username;
-    const text = document.createTextNode(user.username);
-    option.appendChild(text);
-    select.appendChild(option);
-  });
+  if (users.data) {
+    users.data.forEach(user => {
+      const option = document.createElement("option");
+      option.value = user.username;
+      const text = document.createTextNode(user.username);
+      option.appendChild(text);
+      select.appendChild(option);
+    });
+  }
 }
 
 async function getBoardData(id) {
@@ -106,29 +112,26 @@ async function getBoardData(id) {
 async function showBoards() {
   const boards = await HttpClient.get("board");
 
-  if (boards.data) {
-    populateBoards(boards);
-  }
+  populateBoards(boards);
 }
 
 async function showTeams() {
   const teams = await HttpClient.get("team");
-  if (teams.data) {
-    populateTeams(teams);
-  }
+
+  populateTeams(teams);
 }
 
 async function showListsByBoardId(boardId, element) {
   const lists = await HttpClient.getById("board/lists", boardId);
+
   populateLists(lists, element);
 }
 
 // TODO show team members when relation has been added
 async function showUsers(element) {
   const users = await HttpClient.get("user");
-  if (users.data) {
-    populateUsers(users, element);
-  }
+
+  populateUsers(users, element);
 }
 
 function checkLogin() {

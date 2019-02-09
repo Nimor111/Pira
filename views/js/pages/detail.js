@@ -15,79 +15,79 @@ const boardDetailPage = `
       <div class="inner-collapsible">
         <%for(let card in this.lists[list].cards.data) {%>
         <div class="card-dropdown-content" id="show-card-<%this.lists[list].cards.data[card].id%>"><% this.lists[list].cards.data[card].title %></div>
-          <div id="card-modal-<%this.lists[list].cards.data[card].id%>" class="modal">
-            <div class="modal-content">
-              <div class="modal-header">
-                <span id="card-close-btn-<%this.lists[list].cards.data[card].id%>"" class="closeBtn"">&times;</span>
-                <h2><% this.lists[list].cards.data[card].title %></h2>
-              </div>
-              <div class="modal-body">
-                <h3>Description</h3>
-                <p><% this.lists[list].cards.data[card].description %></p>
-                <form id="card-list-form-<% this.lists[list].cards.data[card].id %>" accept-charset="utf-8">
-                  <h3>List</h3>
-                  <select id="select-list-<% this.lists[list].cards.data[card].id%>">
-                  </select>
-                </form>
-              </div>
-              <button type="submit" id="update-card-<% this.lists[list].cards.data[card].id %>"class="modal-footer">Update card</button>
+        <div id="card-modal-<%this.lists[list].cards.data[card].id%>" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span id="card-close-btn-<%this.lists[list].cards.data[card].id%>"" class="closeBtn"">&times;</span>
+              <h2><% this.lists[list].cards.data[card].title %></h2>
             </div>
+            <div class="modal-body">
+              <h3>Description</h3>
+              <p><% this.lists[list].cards.data[card].description %></p>
+              <form id="card-list-form-<% this.lists[list].cards.data[card].id %>" accept-charset="utf-8">
+                <h3>List</h3>
+                <select id="select-list-<% this.lists[list].cards.data[card].id%>">
+                </select>
+              </form>
+            </div>
+            <button type="submit" id="update-card-<% this.lists[list].cards.data[card].id %>"class="modal-footer">Update card</button>
           </div>
-          <script>
+        </div>
+        <script>
             cardModal(<% this.lists[list].cards.data[card].id %>, <% this.id %>);
           </script>
-        <%}%>
+          <%}%>
+        </div>
       </div>
+      <%}%>
     </div>
-    <%}%>
   </div>
-</div>
 
-<div id="createListModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span id="list-close-btn" class="closeBtn">&times;</span>
-      <h2>Create List</h2>
+  <div id="createListModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span id="list-close-btn" class="closeBtn">&times;</span>
+        <h2>Create List</h2>
+      </div>
+      <div class="modal-body">
+        <form id="create-list-form" accept-charset="utf-8">
+          <label for="name">Name</label><br />
+          <input type="text" name="name" id="name" placeholder="Enter name here..." />
+        </form>
+      </div>
+      <button type="submit" class="modal-footer" id="submit-list">
+        <h3>Create list</h3>
+      </button>
     </div>
-    <div class="modal-body">
-      <form id="create-list-form" accept-charset="utf-8">
-        <label for="name">Name</label><br />
-        <input type="text" name="name" id="name" placeholder="Enter name here..." />
-      </form>
-    </div>
-    <button type="submit" class="modal-footer" id="submit-list">
-      <h3>Create list</h3>
-    </button>
   </div>
-</div>
 
-<div id="createCardModal" class="modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span id="card-close-btn" class="closeBtn">&times;</span>
-      <h2>Create Card</h2>
+  <div id="createCardModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span id="card-close-btn" class="closeBtn">&times;</span>
+        <h2>Create Card</h2>
+      </div>
+      <div class="modal-body">
+        <form id="create-card-form" accept-charset="utf-8">
+          <label for="title">Title</label><br />
+          <input type="text" name="title" id="title" placeholder="Enter title here..." />
+          <label for="description">Description</label><br />
+          <textarea id="description" placeholder="Enter description here..."></textarea>
+          <label for="assignee">Assignee</label><br />
+          <select id="select-assignee">
+          </select>
+          <label for="list">List</label><br />
+          <select id="select-list">
+          </select>
+        </form>
+      </div>
+      <button type="submit" class="modal-footer" id="submit-card">
+        <h3>Create card</h3>
+      </button>
     </div>
-    <div class="modal-body">
-      <form id="create-card-form" accept-charset="utf-8">
-        <label for="title">Title</label><br />
-        <input type="text" name="title" id="title" placeholder="Enter title here..." />
-        <label for="description">Description</label><br />
-        <textarea id="description" placeholder="Enter description here..."></textarea>
-        <label for="assignee">Assignee</label><br />
-        <select id="select-assignee">
-        </select>
-        <label for="list">List</label><br />
-        <select id="select-list">
-        </select>
-      </form>
-    </div>
-    <button type="submit" class="modal-footer" id="submit-card">
-      <h3>Create card</h3>
-    </button>
   </div>
-</div>
 
-<script>
+  <script>
   boardDetailModals(<% this.id %>);
 </script>
 `;
